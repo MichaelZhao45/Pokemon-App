@@ -10,7 +10,7 @@
     <div id="searchBox">
       <!-- search box div -->
       <input type="text" id="pokemonName" placeholder="Enter Pokemon Name..." />
-      <button onclick="main()">Catch Pokemon</button>
+      <button id="catchButton" onclick="main()">Catch Pokemon</button>
     </div>
 
     <section id="pokemon">
@@ -18,13 +18,29 @@
         <!-- container for pokemon img-->
         <img src="" id="pokemonImage" display="none" />
       </div>
-
+      <div id="name">
+        <!-- Pokemon name-->
+      </div>
       <div id="description">
         <!-- weight, type, height, abilities and id-->
+        <h1>Pokemon Description</h1>
+        <p id="id"></p>
+        <p id="height"></p>
+        <p id="weight"></p>
+        <ul id="abilities">
+          Abilities
+        </ul>
       </div>
 
       <div id="stats">
         <!-- pokemon stats-->
+        <h1>Pokemon Stats</h1>
+        <p id="hp"></p>
+        <p id="attack"></p>
+        <p id="defense"></p>
+        <p id="specialAttack"></p>
+        <p id="specialDefence"></p>
+        <p id="speed"></p>
       </div>
     </section>
 
