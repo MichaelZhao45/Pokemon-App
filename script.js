@@ -15,7 +15,6 @@ function getImage(data) {           // get pokemon sprite image
     imageElement.src = pokemonSprite;
     imageElement.style.display = "block";
 
-
 }
 
 function getStats(data) {           // base stats
@@ -25,7 +24,7 @@ function getStats(data) {           // base stats
 
     for (let i = 0; i < pokemonStats.length; i++) {             // pokemonStats[i].base_stat === object, base_stat is the actual instance var
         let statElement = document.getElementById(statIds[i]);
-        statElement.innerHTML = statIds[i] + pokemonStats[i].base_stat;//sanitizeHTML(statIds[i]) + sanitizeHTML(pokemonStats[i].base_stat);
+        statElement.innerHTML = statIds[i] + ": " + pokemonStats[i].base_stat;//sanitizeHTML(statIds[i]) + sanitizeHTML(pokemonStats[i].base_stat);
     }   
 
 
@@ -33,32 +32,66 @@ function getStats(data) {           // base stats
 
 function getDescription(data) {     // get weight, height, type, abilities, and pokedex id
 
-    // get description elements that aren't an array
+    // get description elements that aren't an array    
+
+    const name = data.name;
+    const nameElement = document.getElementById('name');
+    nameElement.innerHTML = name[0].toUpperCase() + name.slice(1);
+
     const id = data.id;
     const idElement = document.getElementById('id');
     idElement.innerHTML = "ID: " + id;//sanitizeHTML(id);
 
-    const weight = data.weight;
     const weightElement = document.getElementById('weight');
-    weightElement.innerHTML = "Weight: " + weight;//sanitizeHTML(weight);
+    weightElement.innerHTML = "Weight: " + convertWeight(data) + "kg";//sanitizeHTML(weight);
 
-    const height = data.height;
     const heightElement = document.getElementById('height');
-    heightElement.innerHTML = "Height: " + height;//sanitizeHTML(height); 
+    heightElement.innerHTML = "Height: " + convertHeight(data) + "m";//sanitizeHTML(height); 
+    
+    // abilities
+
+    const abilities = data.abilities;
+    const abilitiesList = document.getElementById('abilities');
+    for (let i = 0; i < abilities.length; i++) {
+        let li = document.createElement('li');
+        li.innerText = abilities[i].ability.name;
+        abilitiesList.appendChild(li);
+    }
+
+
+
+    // type
+
+    const type = data.types;
+    const typeList = document.getElementById('type');             // query for type
+    for (let i = 0; i < type.length; i++) {                     // for loop to loop through type array 
+        let li = document.createElement('li');                  // create a list element
+        li.innerText = type[i].type.name;                       // put the type in the list element
+        typeList.appendChild(li);                               // append the list element to the parent, which is the element from query
+    }
+
     
 
+}
 
-
+function convertHeight(data) {              // convertHeight helper function... height: decimetres -> metres
+    const height = data.height;
+    return height / 10;
 
 }
 
-function convertHeight() {              // height: decimetres -> metres
+function convertWeight(data) {              // convertWeight helper function... weight: hectograms -> kg
+    const weight = data.weight;
+    return weight / 10;
 
 }
 
-function convertWeight() {              // weight: hectograms -> kg
-
+function reset() {
+    const catchButton = document.getElementById('catchButton');
+    catchButton.disabled = false;
+    window.location.reload();
 }
+
 
 
 async function main() {         // async main function for script
@@ -74,11 +107,17 @@ async function main() {         // async main function for script
         }
 
         const data = await response.json();
-        console.log(data);
+        //console.log(data);
 
         getImage(data);
         getStats(data);
         getDescription(data);
+
+        if (pokemonName) {
+            const catchButton = document.getElementById('catchButton');
+            catchButton.disabled = true;
+        }
+        
 
     }
     catch(error) {

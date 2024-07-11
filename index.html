@@ -5,16 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokemon</title>
     <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.cdnfonts.com/css/pokemon-solid"
+      rel="stylesheet"
+    />
   </head>
   <body>
+    <header>
+      <!-- Header of site-->
+      <h1>Pokemon</h1>
+      <h2>The Pokedex</h2>
+    </header>
     <div id="searchBox">
       <!-- search box div -->
       <input type="text" id="pokemonName" placeholder="Enter Pokemon Name..." />
       <button id="catchButton" onclick="main()">Catch Pokemon</button>
+      <button id="resetButton" onclick="reset()">Reset</button>
     </div>
 
     <section id="pokemon">
-      <div id="img">
+      <div id="image">
         <!-- container for pokemon img-->
         <img src="" id="pokemonImage" display="none" />
       </div>
@@ -23,18 +33,18 @@
       </div>
       <div id="description">
         <!-- weight, type, height, abilities and id-->
-        <h1>Pokemon Description</h1>
+        <h3>Pokemon Description</h3>
+        <p id="type"></p>
         <p id="id"></p>
         <p id="height"></p>
         <p id="weight"></p>
-        <ul id="abilities">
-          Abilities
-        </ul>
+        <h3>Abilities</h3>
+        <p id="abilities"></p>
       </div>
 
       <div id="stats">
         <!-- pokemon stats-->
-        <h1>Pokemon Stats</h1>
+        <h3>Pokemon Stats</h3>
         <p id="hp"></p>
         <p id="attack"></p>
         <p id="defense"></p>
@@ -43,6 +53,10 @@
         <p id="speed"></p>
       </div>
     </section>
+
+    <footer>
+      <h2>footer</h2>
+    </footer>
 
     <script src="./script.js"></script>
   </body>
