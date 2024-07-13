@@ -9,42 +9,48 @@
       href="https://fonts.cdnfonts.com/css/pokemon-solid"
       rel="stylesheet"
     />
+    <link rel="icon" href="images/pokeBallLogo.png" />
   </head>
   <body>
     <header>
       <!-- Header of site-->
-      <h1>Pokemon</h1>
-      <h2>The Pokedex</h2>
+      <img src="images/pichu.png" id="pichu" />
+      <h1>Pichu's Pokedex</h1>
     </header>
     <div id="searchBox">
       <!-- search box div -->
-      <input type="text" id="pokemonName" placeholder="Enter Pokemon Name..." />
+      <input
+        type="text"
+        id="pokemonName"
+        placeholder="Enter Pokemon Name or ID..."
+      />
       <button id="catchButton" onclick="main()">Catch Pokemon</button>
       <button id="resetButton" onclick="reset()">Reset</button>
     </div>
 
     <section id="pokemon">
-      <div id="image">
-        <!-- container for pokemon img-->
-        <img src="" id="pokemonImage" display="none" />
-      </div>
-      <div id="name">
-        <!-- Pokemon name-->
+      <div id="nameImg">
+        <p id="name"></p>
+        <div id="image">
+          <!-- container for pokemon img-->
+          <img src="" id="pokemonImage" display="none" />
+        </div>
       </div>
       <div id="description">
         <!-- weight, type, height, abilities and id-->
-        <h3>Pokemon Description</h3>
+        <h3 id="descriptionHeader">Pokemon Description</h3>
         <p id="type"></p>
         <p id="id"></p>
         <p id="height"></p>
         <p id="weight"></p>
-        <h3>Abilities</h3>
-        <p id="abilities"></p>
+      </div>
+      <div id="abilities">
+        <h3 id="abilitiesHeader">Abilities</h3>
       </div>
 
       <div id="stats">
         <!-- pokemon stats-->
-        <h3>Pokemon Stats</h3>
+        <h3 id="statsHeader">Pokemon Stats</h3>
         <p id="hp"></p>
         <p id="attack"></p>
         <p id="defense"></p>
@@ -55,7 +61,7 @@
     </section>
 
     <footer>
-      <h2>footer</h2>
+      <p>Created By Michael Zhao</p>
     </footer>
 
     <script src="./script.js"></script>

@@ -99,6 +99,9 @@ async function main() {         // async main function for script
     try{
 
         const pokemonName = document.getElementById('pokemonName').value.toLowerCase();
+        const description = document.getElementById('descriptionHeader');
+        const abilities = document.getElementById('abilitiesHeader');
+        const stats = document.getElementById('statsHeader');
 
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
 
@@ -109,6 +112,9 @@ async function main() {         // async main function for script
         const data = await response.json();
         //console.log(data);
 
+        description.style.display = 'block';
+        abilities.style.display = 'block';
+        stats.style.display = 'block';
         getImage(data);
         getStats(data);
         getDescription(data);
