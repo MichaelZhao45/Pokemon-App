@@ -1,10 +1,6 @@
-// sanitize HTML to prevent XSS attacks
-/*
-var sanitizeHTML = function (str) {
-	var temp = document.createElement('div');
-	temp.textContent = str;
-	return temp.innerHTML;
-};
+/*  script.js for pokemon app
+    @author Michael Zhao
+    @date July 13, 2024
 */
 
 function getImage(data) {           // get pokemon sprite image
@@ -20,13 +16,17 @@ function getImage(data) {           // get pokemon sprite image
 function getStats(data) {           // base stats
 
     const pokemonStats = data.stats;
-    const statIds = ["hp", "attack", "defense", "specialAttack", "specialDefence", "speed"];
+    const statIds = ["Hp", "Attack", "Defense", "SpecialAttack", "SpecialDefence", "Speed"];
+    let totalStats = 0;
 
     for (let i = 0; i < pokemonStats.length; i++) {             // pokemonStats[i].base_stat === object, base_stat is the actual instance var
         let statElement = document.getElementById(statIds[i]);
-        statElement.innerHTML = statIds[i] + ": " + pokemonStats[i].base_stat;//sanitizeHTML(statIds[i]) + sanitizeHTML(pokemonStats[i].base_stat);
+        statElement.innerText = statIds[i] + ": " + pokemonStats[i].base_stat;
+        totalStats += pokemonStats[i].base_stat;
     }   
 
+    const totalElement = document.getElementById('Total');
+    totalElement.innerText = "Total: " + totalStats;
 
 }
 
@@ -36,17 +36,17 @@ function getDescription(data) {     // get weight, height, type, abilities, and 
 
     const name = data.name;
     const nameElement = document.getElementById('name');
-    nameElement.innerHTML = name[0].toUpperCase() + name.slice(1);
+    nameElement.innerText = name[0].toUpperCase() + name.slice(1);
 
     const id = data.id;
     const idElement = document.getElementById('id');
-    idElement.innerHTML = "ID: " + id;//sanitizeHTML(id);
+    idElement.innerText = "ID: " + id;
 
     const weightElement = document.getElementById('weight');
-    weightElement.innerHTML = "Weight: " + convertWeight(data) + "kg";//sanitizeHTML(weight);
+    weightElement.innerText = "Weight: " + convertWeight(data) + "kg";
 
     const heightElement = document.getElementById('height');
-    heightElement.innerHTML = "Height: " + convertHeight(data) + "m";//sanitizeHTML(height); 
+    heightElement.innerText = "Height: " + convertHeight(data) + "m";
     
     // abilities
 
@@ -54,20 +54,18 @@ function getDescription(data) {     // get weight, height, type, abilities, and 
     const abilitiesList = document.getElementById('abilities');
     for (let i = 0; i < abilities.length; i++) {
         let li = document.createElement('li');
-        li.innerText = abilities[i].ability.name;
+        li.innerText = abilities[i].ability.name[0].toUpperCase() + abilities[i].ability.name.slice(1);
         abilitiesList.appendChild(li);
     }
-
-
 
     // type
 
     const type = data.types;
-    const typeList = document.getElementById('type');             // query for type
-    for (let i = 0; i < type.length; i++) {                     // for loop to loop through type array 
-        let li = document.createElement('li');                  // create a list element
-        li.innerText = type[i].type.name;                       // put the type in the list element
-        typeList.appendChild(li);                               // append the list element to the parent, which is the element from query
+    const typeList = document.getElementById('type');                                               // query for type
+    for (let i = 0; i < type.length; i++) {                                                         // for loop to loop through type array 
+        let li = document.createElement('li');                                                     // create a list element
+        li.innerText = type[i].type.name[0].toUpperCase() + type[i].type.name.slice(1);          // put the type in the list element
+        typeList.appendChild(li);                                                               // append the list element to the parent, which is the element from query
     }
 
     
@@ -110,7 +108,6 @@ async function main() {         // async main function for script
         }
 
         const data = await response.json();
-        //console.log(data);
 
         description.style.display = 'block';
         abilities.style.display = 'block';

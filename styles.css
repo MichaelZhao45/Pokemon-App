@@ -18,7 +18,7 @@ header {
     justify-content: center;
 }
 
-#searchBox {
+#searchBox {                                        /* search box container */                                                    
     background-color: #F6E652;
     padding: 4rem;
     display: flex;
@@ -32,7 +32,7 @@ header {
     font-size: 16px;
 }
 
-button {
+button {                                            /* button styles */
     background-color: #084152;
     color: white;
     border: 2px solid #1A1A1A;
@@ -53,7 +53,6 @@ button :hover {
 
 #name {
     font-size: 2rem;
-    font-family: 'ariel', sans-serif ;
 }
 
 #pokemon {                                          /* pokemon container */
@@ -61,13 +60,13 @@ button :hover {
     flex-direction: row;
     justify-content: center;
     color: white;
-    font-weight: 400;
+    font-weight: 600;
     background-color: #084152;
     border-radius: 15px;
 }
 
-#nameImg {
-    justify-content: center;
+#nameImg {                                          /* name of the pokemon, above the pokemon img */
+    justify-content: center;    
     margin: 0;
 }
 
@@ -87,33 +86,38 @@ img {
 
 #pichu {
     width: 10%;
+    height: auto;
     margin: 0;
 }
 
 
-#description {
+#description {                                          /* description container, contains all pokemon stats */
     background-color: #084152 ;
     color: white;
+    font-size: 1.5rem;
+
 }
 
 #descriptionHeader {
     display: none;
 }
 
-#abilities {
+#abilities {                                            /* abilities styles */
     background-color: #084152 ;
     color: white;
     margin: 2rem;
+    font-size: 1.5rem;
+
 }
 
 #abilitiesHeader {
     display: none;
 }
 
-#stats {
+#stats {                                                /* stats styles */
     background-color: #084152 ;
     color: white;
-    font-size: 2rem;
+    font-size: 1.25rem;
 
 }
 
@@ -127,50 +131,17 @@ footer {
     border-top: #1A1A1A solid 2px;
 }
 
-
-
-/* CSS */
-
-/*
-.button-27 {
-  appearance: none;
-  background-color: #000000;
-  border: 2px solid #1A1A1A;
-  border-radius: 15px;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: inline-block;
-  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 16px;
-  font-weight: 600;
-  line-height: normal;
-  margin: 0;
-  min-height: 60px;
-  min-width: 0;
-  outline: none;
-  padding: 16px 24px;
-  text-align: center;
-  text-decoration: none;
-  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: 100%;
-  will-change: transform;
+#contactIcons {                                             /* contactIcons styles for the clickable link icons */
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
-.button-27:disabled {
-  pointer-events: none;
+#contactIcons p {
+    padding: 2rem;
 }
 
-.button-27:hover {
-  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-  transform: translateY(-2px);
+#contactIcons img {
+    height: 3.5rem;
+    width: 3.5rem;
 }
-
-.button-27:active {
-  box-shadow: none;
-  transform: translateY(0);
-}
-  */
